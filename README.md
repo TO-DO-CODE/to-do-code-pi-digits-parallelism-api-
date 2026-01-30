@@ -1,4 +1,12 @@
-# ARSW – Laboratorio 1  
+# ARSW – Laboratorio 1 
+
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk&logoColor=white)
+![Jacoco](https://img.shields.io/badge/Jacoco-black?style=for-the-badge&logo=sonarcloud&logoColor=F3702A)
+![SonarQ](https://img.shields.io/badge/SonarCloud-black?style=for-the-badge&logo=sonarcloud&logoColor=F3702A)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-brightgreen?style=for-the-badge&logo=spring&logoColor=white)
+
 ## Paralelismo, Arquitectura y Calidad desde el Día 1  
 **Spring Boot 3.x – Java 21 – REST – Testing – OpenAPI**
 
@@ -227,3 +235,38 @@ Medir tiempos de ejecución para un `count` grande usando:
 > *Es una decisión arquitectónica con costos y límites.*
 
 Bienvenidos a **Arquitectura de Software (ARSW)**.
+
+
+# Evidencias ✅
+
+
+### Tecnologias Usadas 💻
+
+- *☕ Java OpenJDK 21*: Lenguaje de programación principal
+- *🍃 Spring Boot 3.3.4*: Framework principal para desarrollo de aplicaciones web
+- *📊 JaCoCo*: Análisis de cobertura de código
+- *🔍 SonarQ*: Análisis estático de código
+- *🐳 Docker*: Containerización de la aplicación
+- *📖 Swagger UI*: Interfaz interactiva para probar la API
+
+
+### 📖 Swagger UI
+
+<img width="859" height="482" alt="image" src="https://github.com/user-attachments/assets/27d979e6-8ef8-4204-98c8-210f83c2a711" />
+
+<img width="901" height="478" alt="image" src="https://github.com/user-attachments/assets/6658f73d-12f0-445d-969b-7da67b72b6a8" />
+
+### 📊 JaCoCo
+
+<img width="864" height="470" alt="image" src="https://github.com/user-attachments/assets/9c322e11-c1a3-41ab-840b-802086fed412" />
+
+### 🔍 SonarQ
+
+<img width="859" height="477" alt="image" src="https://github.com/user-attachments/assets/4f94b4f4-2408-4ea4-80e7-92160727ad3a" />
+
+### ⌛Tiempos 
+
+<img width="868" height="478" alt="image" src="https://github.com/user-attachments/assets/b12a764c-4b6e-4fd6-b78d-cd16baea531d" />
+
+
+
