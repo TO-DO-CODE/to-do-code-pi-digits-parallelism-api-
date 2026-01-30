@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PiDigitsService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parallelism</a> &gt; <a href="index.source.html" class="el_package">edu.eci.arsw.parallelism.core</a> &gt; <span class="el_source">PiDigitsService.java</span></div><h1>PiDigitsService.java</h1><pre class="source lang-java linenums">package edu.eci.arsw.parallelism.core;
+
+import edu.eci.arsw.parallelism.core.strategies.ParallelStrategy;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+@Service
+/**
+ * Service that provides Pi digit calculation using configurable strategies.
+ */
+public class PiDigitsService {
+
+    private final Map&lt;String, ParallelStrategy&gt; strategies;
+
+    /**
+     * Constructs the service with available strategies discovered by Spring.
+     *
+     * @param strategyList list of {@link ParallelStrategy} implementations
+     */
+<span class="fc" id="L24">    public PiDigitsService(List&lt;ParallelStrategy&gt; strategyList) {</span>
+<span class="fc" id="L25">        this.strategies = strategyList.stream()</span>
+<span class="fc" id="L26">                .collect(Collectors.toMap(ParallelStrategy::name, Function.identity()));</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * Calculate hexadecimal digits of Pi using the named strategy.
+     *
+     * @param start zero-based position after the radix point
+     * @param count number of hex digits to compute
+     * @param threads number of threads to use (strategy-dependent)
+     * @param strategyName name of the strategy to use
+     * @return an uppercase hexadecimal string with the requested digits
+     * @throws IllegalArgumentException when the named strategy is unknown
+     */
+    public String calculate(int start, int count, int threads, String strategyName) {
+<span class="fc" id="L40">        ParallelStrategy strategy = strategies.get(strategyName);</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (strategy == null) {</span>
+<span class="fc" id="L43">            throw new IllegalArgumentException(&quot;Unknown strategy: &quot; + strategyName);</span>
+        }
+
+<span class="fc" id="L46">        return strategy.calculate(start, count, threads);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

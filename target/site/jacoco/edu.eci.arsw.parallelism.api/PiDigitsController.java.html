@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PiDigitsController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parallelism</a> &gt; <a href="index.source.html" class="el_package">edu.eci.arsw.parallelism.api</a> &gt; <span class="el_source">PiDigitsController.java</span></div><h1>PiDigitsController.java</h1><pre class="source lang-java linenums">
+package edu.eci.arsw.parallelism.api;
+
+import edu.eci.arsw.parallelism.core.PiDigitsService;
+import jakarta.validation.constraints.Min;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@RestController
+@RequestMapping(&quot;/api/v1/pi&quot;)
+@Validated
+@Tag(name = &quot;Pi&quot;, description = &quot;Operaciones para obtener dígitos de Pi en hexadecimal&quot;)
+/**
+ * REST controller that exposes endpoints to obtain hexadecimal digits of Pi.
+ */
+public class PiDigitsController {
+
+    private final PiDigitsService service;
+
+<span class="fc" id="L23">    public PiDigitsController(PiDigitsService service) {</span>
+<span class="fc" id="L24">        this.service = service;</span>
+<span class="fc" id="L25">    }</span>
+
+    /**
+     * REST endpoint that returns hexadecimal digits of Pi.
+     *
+     * @param start zero-based position after the radix point (must be &gt;= 0)
+     * @param count number of hex digits to return (must be &gt;= 0)
+     * @param threads number of threads to use for calculation (must be &gt;= 1)
+     * @param strategy calculation strategy to use (e.g., &quot;sequential&quot; or &quot;parallel&quot;)
+     * @return a {@link PiResponse} containing the request parameters and the
+     * computed digits as an uppercase hexadecimal string
+     */
+    @Operation(summary = &quot;Obtener dígitos de Pi&quot;, description = &quot;Devuelve una cadena con dígitos hexadecimales de Pi a partir de la posición solicitada&quot;)
+    @GetMapping(&quot;/digits&quot;)
+    public PiResponse digits(
+            @RequestParam @Min(0) @Parameter(description = &quot;Posición inicial (0-based) después del punto&quot;, example = &quot;0&quot;, required = true) int start,
+            @RequestParam @Min(0) @Parameter(description = &quot;Cantidad de dígitos hexadecimales a retornar&quot;, example = &quot;5&quot;, required = true) int count,
+            @RequestParam(required = false, defaultValue = &quot;1&quot;) @Min(1) @Parameter(description = &quot;Número de hilos a usar (dependiente de la estrategia)&quot;, example = &quot;1&quot;, required = false) int threads,
+            @RequestParam(required = false, defaultValue = &quot;sequential&quot;) @Parameter(description = &quot;Estrategia de cálculo: 'sequential' o 'thread-join'&quot;, example = &quot;sequential&quot;, required = false) String strategy
+    ) {
+<span class="fc" id="L45">        String digits = service.calculate(start, count, threads, strategy);</span>
+<span class="fc" id="L46">        return new PiResponse(start, count, digits);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

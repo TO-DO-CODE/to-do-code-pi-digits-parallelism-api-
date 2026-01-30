@@ -3,9 +3,20 @@ package edu.eci.arsw.parallelism.core.strategies;
 import edu.eci.arsw.parallelism.core.PiDigits;
 import org.springframework.stereotype.Component;
 
+/**
+ * Strategy that computes Pi digits by creating worker threads and joining them.
+ */
 @Component
 public class ThreadJoinStrategy implements ParallelStrategy {
-
+    /**
+     * Calculate digits by splitting the work across threads and joining them.
+     *
+     * @param start zero-based position after the radix point
+     * @param count number of hex digits to compute
+     * @param threads requested number of threads (must be >= 1)
+     * @return an uppercase hexadecimal string with the requested digits
+     * @throws IllegalArgumentException when {@code threads} &lt; 1
+     */
     @Override
     public String calculate(int start, int count, int threads) {
         if (threads < 1) {
@@ -56,6 +67,9 @@ public class ThreadJoinStrategy implements ParallelStrategy {
         return sb.toString();
     }
 
+    /**
+     * Name identifying this strategy implementation.
+     */
     @Override
     public String name() {
         return "thread-join";
