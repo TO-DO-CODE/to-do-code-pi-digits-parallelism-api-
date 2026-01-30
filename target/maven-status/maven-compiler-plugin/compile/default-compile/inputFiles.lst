@@ -1,6 +1,9 @@
-D:\Tomas\ARSW\Lab01ARSW\src\main\java\edu\eci\arsw\parallelism\api\GlobalExceptionHandler.java
-D:\Tomas\ARSW\Lab01ARSW\src\main\java\edu\eci\arsw\parallelism\api\PiDigitsController.java
-D:\Tomas\ARSW\Lab01ARSW\src\main\java\edu\eci\arsw\parallelism\api\PiResponse.java
-D:\Tomas\ARSW\Lab01ARSW\src\main\java\edu\eci\arsw\parallelism\core\PiDigits.java
-D:\Tomas\ARSW\Lab01ARSW\src\main\java\edu\eci\arsw\parallelism\core\PiDigitsService.java
-D:\Tomas\ARSW\Lab01ARSW\src\main\java\edu\eci\arsw\parallelism\ParallelismApplication.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/ParallelismApplication.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/api/GlobalExceptionHandler.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/api/PiDigitsController.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/api/PiResponse.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/core/PiDigits.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/core/PiDigitsService.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/core/strategies/ParallelStrategy.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/core/strategies/SequentialStrategy.java
+/home/juan/Documentos/lab/to-do-code-pi-digits-parallelism-api-/src/main/java/edu/eci/arsw/parallelism/core/strategies/ThreadJoinStrategy.java

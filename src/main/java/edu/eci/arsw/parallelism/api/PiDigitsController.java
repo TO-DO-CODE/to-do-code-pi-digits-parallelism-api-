@@ -20,9 +20,11 @@ public class PiDigitsController {
     @GetMapping("/digits")
     public PiResponse digits(
             @RequestParam @Min(0) int start,
-            @RequestParam @Min(0) int count
+            @RequestParam @Min(0) int count,
+            @RequestParam(required = false, defaultValue = "1") @Min(1) int threads,
+            @RequestParam(required = false, defaultValue = "sequential") String strategy
     ) {
-        String digits = service.calculateSequential(start, count);
+        String digits = service.calculate(start, count, threads, strategy);
         return new PiResponse(start, count, digits);
     }
 }
