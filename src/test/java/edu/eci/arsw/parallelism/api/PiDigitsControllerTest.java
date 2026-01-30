@@ -29,6 +29,17 @@ class PiDigitsControllerTest {
     }
 
     @Test
+    void shouldReturnDigitsWithThreadJoinStrategy() throws Exception {
+        mockMvc.perform(get("/api/v1/pi/digits")
+                        .param("start", "0")
+                        .param("count", "5")
+                        .param("threads", "2")
+                        .param("strategy", "thread-join"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.digits").value("243F6"));
+    }
+
+    @Test
     void shouldReturnDigitsZeroCount() throws Exception {
         mockMvc.perform(get("/api/v1/pi/digits")
                         .param("start", "0")
@@ -52,6 +63,15 @@ class PiDigitsControllerTest {
         mockMvc.perform(get("/api/v1/pi/digits")
                         .param("start", "0")
                         .param("count", "-1"))
+                .andExpect(status().isBadRequest());
+    }
+    
+    @Test
+    void shouldReturnBadRequestForInvalidThreads() throws Exception {
+        mockMvc.perform(get("/api/v1/pi/digits")
+                        .param("start", "0")
+                        .param("count", "5")
+                        .param("threads", "0"))
                 .andExpect(status().isBadRequest());
     }
 }
